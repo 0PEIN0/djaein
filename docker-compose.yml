@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  djaein_db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: djaein
+  djaein_django:
+      build:
+        context: ./djaein
+        dockerfile: django.DockerFile
+      ports:
+        - "8001:8001"
