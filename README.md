@@ -3,7 +3,7 @@
 Boiler plate project for django/postgres.
 
 ### Stacks
-1. Django `2.0.6`
+1. Django `1.11`
 2. DRF
 3. Celery
 4. Redis
