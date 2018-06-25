@@ -1,0 +1,3 @@
+class GenericApiViewHandler(object):
+
+    pass
