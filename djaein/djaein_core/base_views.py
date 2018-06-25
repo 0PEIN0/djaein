@@ -45,7 +45,8 @@ class BaseListCreateAPIView(BaseApiView, ListCreateAPIView):
         user = request.user
         self.HANDLER.check_permission(method_name=sys._getframe().f_code.co_name,
                                       user=user)
-        response, data = self.HANDLER.check_serializer(request=request)
+        response, data = self.HANDLER.check_serializer(
+            request=request, serializer_class=self.PAYLOAD_SERIALIZER)
         if response:
             return response
         if hasattr(self, 'custom_post'):

@@ -11,9 +11,10 @@ class GenericApiHandler(object):
 
     def check_serializer(self,
                          request,
+                         serializer_class,
                          partial=False,
                          many=False):
-        serializer = self.get_serializer(
+        serializer = serializer_class(
             data=request.data, partial=partial, many=many)
         if serializer.is_valid() is False:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST), None
