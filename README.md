@@ -15,7 +15,7 @@ Boiler plate project for django/postgres.
 1. To build the services, run the following commands in terminal. Make sure `docker-compose` is installed on your local machine.
 
 ```bash
-docker-compose build
+COMPOSE_HTTP_TIMEOUT=2000 docker-compose build
 ```
 
 2. To run the services, run the following commands in terminal.
