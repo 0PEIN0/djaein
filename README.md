@@ -33,6 +33,14 @@ docker-compose up
 6. Copy the contents from `djaein` folder inside the newly created django project.
 7. Replace the following strings in the parent directory.
 
+`admin@djaein.net` -> `new_project_django_admin_panel_user_email`
+
+`djaein-204-login` -> `new_project_django_admin_panel_super_user_password`
+
 `DJAEIN` -> `NEW_DJANGO_PROJECT_NAME`
 
 `djaein` -> `new_project_name`
+
+`9001` -> `new_django_project_running_port`
+
+`10001` -> `new_project_celery_running_port`
