@@ -139,7 +139,7 @@ REST_FRAMEWORK = {
 }
 APPLICATION_SYS_ADMIN_EMAIL = 'admin@djaein.net'
 APPLICATION_SYS_ADMIN_PASSWORD = 'djaein-204-login'
-# AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'
 CELERY_IMPORTS = ('personal.tasks',)
 CELERY_BROKER_URL = 'amqp://localhost'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))

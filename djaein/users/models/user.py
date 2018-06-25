@@ -2,7 +2,7 @@ from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.db import models
 
-from core import BaseManager, BaseModel
+from djaein_core import BaseManager, BaseModel
 
 
 class UserManager(BaseUserManager, BaseManager):

@@ -1,4 +1,4 @@
-from core import SYSTEM_MESSAGE_LIST
+from djaein_core import SYSTEM_MESSAGE_LIST
 
 ERROR_MESSAGE_LIST = []
 
