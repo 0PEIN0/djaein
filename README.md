@@ -24,3 +24,14 @@ docker-compose build
 ```bash
 docker-compose up
 ```
+
+### Using as boiler plate
+1. Copy the source from this repository.
+2. Move to the place where the source is copied.
+3. Delete `djaein/djaein` folder.
+4. Delete `djaein/manage.py` file.
+5. Create new django project.
+6. Copy the contents from `djaein` folder inside the newly created django project.
+7. Replace the following strings in the parent directory.
+`DJAEIN` -> `NEW_DJANGO_PROJECT_NAME`
+`djaein` -> `new_project_name`

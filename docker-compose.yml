@@ -12,3 +12,7 @@ services:
         dockerfile: django.DockerFile
       ports:
         - "8001:8001"
+      volumes:
+        - .:/app
+      depends_on:
+        - djaein_db
