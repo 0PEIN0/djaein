@@ -127,8 +127,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ##########CUSTOM SECTION START##########
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+    ),
+    'NON_FIELD_ERRORS_KEY': '__all__'
+}
 APPLICATION_SYS_ADMIN_EMAIL = 'admin@djaein.net'
 APPLICATION_SYS_ADMIN_PASSWORD = 'djaein-204-login'
+# AUTH_USER_MODEL = 'users.User'
+CELERY_IMPORTS = ('personal.tasks',)
+CELERY_BROKER_URL = 'amqp://localhost'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+MEDIA_ROOT = BASE_DIR
+MEDIA_UPLOAD_FOLDER = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
 try:
     from .local_settings import *
 except ImportError:

@@ -1,4 +1,4 @@
-class GenericApiViewHandler(object):
+class GenericApiHandler(object):
 
     def check_permission(self,
                          user):
