@@ -4,18 +4,22 @@ services:
   db:
     image: postgres:9.6
     container_name: djaein_db
+    expose:
+      - "5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+      - pg_backups:/pg_backups
     restart: always
     environment:
-      - POSTGRES_DB=djaein
-      - POSTGRES_USER=djaein
-      - POSTGRES_PASSWORD=djaein
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   django_app:
       build:
         context: ./
         dockerfile: django.DockerFile
       container_name: djaein_django_app
+      command: python /app/djaein/manage.py migrate --noinput
       command: python /app/djaein/manage.py runserver 0.0.0.0:9001
       ports:
         - "9001:9001"
@@ -33,5 +37,6 @@ services:
      - '6379:6379'
 
 volumes:
-  postgres_data:
-  redis:
+  postgres_data: {}
+  pg_backups: {}
+  redis: {}

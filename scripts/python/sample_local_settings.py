@@ -1,4 +1,10 @@
+import os
 import sys
+
+POSTGRES_HOST = 'localhost'
+if os.getenv('DOCKER_CONTAINER'):
+    POSTGRES_HOST = 'db'
+
 
 if 'test' in sys.argv:
     DATABASES['default'] = {
@@ -6,7 +12,7 @@ if 'test' in sys.argv:
         'NAME': 'test_djaein',
         'USER': 'djaein',
         'PASSWORD': 'djaein',
-        'HOST': 'localhost',
+        'HOST': POSTGRES_HOST,
     }
 else:
     DATABASES = {
@@ -15,7 +21,7 @@ else:
             'NAME': 'djaein',
             'USER': 'djaein',
             'PASSWORD': 'djaein',
-            'HOST': 'localhost',
+            'HOST': POSTGRES_HOST,
             'PORT': '5432',
         }
     }
