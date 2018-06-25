@@ -1,3 +1,4 @@
+from .base_json_renderer import BaseJsonRenderer
 from .base_manager import BaseManager
 from .base_model import BaseModel
 from .base_model_serializer import BaseModelSerializer

@@ -134,6 +134,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_RENDERER_CLASSES': (
+        'djaein_core.BaseJsonRenderer',
     ),
     'NON_FIELD_ERRORS_KEY': '__all__'
 }

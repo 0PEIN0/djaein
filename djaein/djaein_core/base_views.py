@@ -22,21 +22,22 @@ class BaseListCreateAPIView(BaseApiView, ListCreateAPIView):
 
     def get_queryset(self,
                      user):
-        return MODEL_CLASS.objects.all().order_by(ORDER_BY)
+        return self.MODEL_CLASS.objects.all().order_by(self.ORDER_BY)
 
     def get(self,
             request):
+        print(44)
         user = request.user
-        handler.check_permission(method_name=sys._getframe().f_code.co_name,
-                                 user=user)
+        self.HANDLER.check_permission(method_name=sys._getframe().f_code.co_name,
+                                      user=user)
         data = self.get_queryset(
             user=user)
         if hasattr(self, 'custom_get'):
             data = self.custom_get(data=data)
-        return HANDLER.ok(data=data,
-                          serializer=OUTPUT_SERIALIZER,
-                          request=request,
-                          is_listing=True)
+        return self.HANDLER.ok(data=data,
+                               serializer=self.OUTPUT_SERIALIZER,
+                               request=request,
+                               is_listing=True)
 
     class Meta:
         abstract = True

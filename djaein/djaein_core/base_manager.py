@@ -15,7 +15,7 @@ class BaseManager(models.Manager):
         try:
             model_instance = self.get(uuid=uuid)
         except Exception as ex:
-            raise DatabaseGetException(code='m_base_1')
+            raise DatabaseGetException(code='core_model_manager_base_1')
         return model_instance
 
     class Meta:
