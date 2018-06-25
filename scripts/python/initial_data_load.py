@@ -1,7 +1,8 @@
 from django.conf import settings
 
-from core import DataLoader
+from djaein_core import DataLoader
 from django_celery_beat.models import IntervalSchedule, PeriodicTask
+from users.models import User
 
 if User.objects.filter(email=settings.APPLICATION_SYS_ADMIN_EMAIL).exists() is False:
     User.objects.create_superuser(

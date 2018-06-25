@@ -6,7 +6,15 @@ from djaein_core import BaseManager, BaseModel
 
 
 class UserManager(BaseUserManager, BaseManager):
-    pass
+
+    def create_superuser(self,
+                         email,
+                         password):
+        user = self.model(email=email, is_superuser=True, is_staff=True)
+        user.set_password(password)
+        user.save()
+        user = self.get(email=user.email)
+        return user
 
 
 class User(AbstractBaseUser, PermissionsMixin, BaseModel):
@@ -27,6 +35,11 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         max_length=64,
         help_text='Last name of the user.',
         blank=True,
+    )
+    is_staff = models.BooleanField(
+        verbose_name='Staff Status',
+        default=False,
+        help_text='Identify whether the user is a staff or not.',
     )
 
     def __str__(self):

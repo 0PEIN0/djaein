@@ -30,22 +30,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-PROJECT_APPS = [
-    'users',
-    'personal',
-]
-
-PREREQ_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
-
-INSTALLED_APPS = PROJECT_APPS + PREREQ_APPS
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -127,6 +111,22 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ##########CUSTOM SECTION START##########
+PROJECT_APPS = [
+    'users',
+    'personal',
+]
+PREREQ_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_celery_beat',
+]
+INSTALLED_APPS = PROJECT_APPS + PREREQ_APPS
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
