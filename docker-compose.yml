@@ -1,24 +1,37 @@
 version: '3.6'
 
 services:
-  djaein_db:
+  db:
     image: postgres:9.6
+    container_name: djaein_db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
     environment:
-      POSTGRES_PASSWORD: djaein
-  djaein_django:
+      - POSTGRES_DB=djaein
+      - POSTGRES_USER=djaein
+      - POSTGRES_PASSWORD=djaein
+  django_app:
       build:
-        context: ./djaein
+        context: ./
         dockerfile: django.DockerFile
-      command: python /app/manage.py migrate --noinput
-      command: python /app/manage.py runserver 0.0.0.0:9001
+      container_name: djaein_django_app
+      command: python /app/djaein/manage.py runserver 0.0.0.0:9001
       ports:
         - "9001:9001"
       volumes:
         - .:/app
       depends_on:
-        - djaein_db
+        - db
+  redis:
+    image: redis:latest
+    command: redis-server --requirepass devpassword
+    volumes:
+      - 'redis:/redis_data'
+    container_name: djaein_redis
+    ports:
+     - '6379:6379'
+
 volumes:
   postgres_data:
+  redis:
