@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 PROJECT_APPS = [
-    'tasks',
+    'personal',
 ]
 
 PREREQ_APPS = [
@@ -125,8 +125,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+##########CUSTOM SECTION START##########
+APPLICATION_SYS_ADMIN_EMAIL = 'admin@djaein.net'
+APPLICATION_SYS_ADMIN_PASSWORD = 'djaein-204-login'
 try:
     from .local_settings import *
 except ImportError:
     print('FATAL ERROR: could not load local settings file.')
+##########CUSTOM SECTION END##########
