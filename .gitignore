@@ -1,5 +1,6 @@
 ##########CUSTOM SECTION START##########
 media/
+nohup.out
 ##########CUSTOM SECTION END##########
 # Byte-compiled / optimized / DLL files
 __pycache__/

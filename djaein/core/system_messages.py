@@ -1,0 +1,9 @@
+SYSTEM_ERROR_MESSAGE_LIST = [
+    {
+        'm_base_1': 'Can not find {model_name} by uuid.'
+    }
+]
+
+SYSTEM_SUCCESS_MESSAGE_LIST = []
+
+SYSTEM_MESSAGE_LIST = SYSTEM_ERROR_MESSAGE_LIST + SYSTEM_SUCCESS_MESSAGE_LIST

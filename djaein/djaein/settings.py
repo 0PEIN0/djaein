@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     'tasks',
-    'core',
 ]
 
 PREREQ_APPS = [
