@@ -32,5 +32,7 @@ docker-compose up
 5. Create new django project.
 6. Copy the contents from `djaein` folder inside the newly created django project.
 7. Replace the following strings in the parent directory.
+
 `DJAEIN` -> `NEW_DJANGO_PROJECT_NAME`
+
 `djaein` -> `new_project_name`
