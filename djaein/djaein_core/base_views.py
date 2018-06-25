@@ -12,6 +12,8 @@ class BaseApiView(object):
     HANDLER = GenericApiHandler()
     OUTPUT_SERIALIZER = None
     MODEL_CLASS = None
+    BULK_CREATE = False
+    PAYLOAD_SERIALIZER = None
     ORDER_BY = 'id'
 
     class Meta:
@@ -26,7 +28,6 @@ class BaseListCreateAPIView(BaseApiView, ListCreateAPIView):
 
     def get(self,
             request):
-        print(44)
         user = request.user
         self.HANDLER.check_permission(method_name=sys._getframe().f_code.co_name,
                                       user=user)
@@ -37,7 +38,29 @@ class BaseListCreateAPIView(BaseApiView, ListCreateAPIView):
         return self.HANDLER.ok(data=data,
                                serializer=self.OUTPUT_SERIALIZER,
                                request=request,
-                               is_listing=True)
+                               is_listing=True,
+                               many=True)
+
+    def post(self,
+             request):
+        user = request.user
+        self.HANDLER.check_permission(method_name=sys._getframe().f_code.co_name,
+                                      user=user)
+        response, data = self.HANDLER.check_serializer(request=request)
+        if response:
+            return response
+        if hasattr(self, 'custom_post'):
+            data = self.custom_post(data=data)
+        if self.BULK_CREATE is True:
+            response = []
+            for item in data:
+                response.append(self.MODEL_CLASS.objects.create(**item))
+        else:
+            response = self.MODEL_CLASS.objects.create(**data)
+        return self.HANDLER.created(data=response,
+                                    serializer=self.OUTPUT_SERIALIZER,
+                                    request=request,
+                                    many=self.BULK_CREATE)
 
     class Meta:
         abstract = True
